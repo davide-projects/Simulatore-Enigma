@@ -1,0 +1,94 @@
+# 🏛️ Python Enigma Machine Simulator
+
+Un simulatore fedele e interattivo della celebre macchina crittografica **Enigma** (Modello M3), l'apparecchio utilizzato per cifrare le comunicazioni durante la Seconda Guerra Mondiale. 
+
+Questo progetto dimostra l'implementazione di logiche crittografiche complesse, l'uso della programmazione a oggetti (OOP) e la distribuzione del software tramite containerizzazione.
+
+---
+
+## 🚀 Caratteristiche Tecniche
+Il simulatore riproduce accuratamente i componenti principali della macchina:
+
+* **Rotori (I, II, III)**: Implementazione delle permutazioni degli alfabeti originali.
+* **Meccanismo di Stepping**: Simulazione del "double step" (il centro avanza se lui stesso o il destro sono sulla tacca).
+* **Riflettore (Reflector B)**: Garantisce che la cifratura sia simmetrica (cifrare due volte con la stessa chiave restituisce il testo originale).
+* **Plugboard (Pannello a prese)**: Supporto per lo scambio di coppie di lettere per aumentare la complessità.
+
+---
+
+## 🛠️ Tecnologie Utilizzate
+* **Linguaggio**: Python 3.10+ (utilizzo del pattern matching `match-case`).
+* **Containerizzazione**: Docker per la portabilità totale dell'ambiente di esecuzione.
+
+---
+
+## 🐳 Esecuzione con Docker (Consigliato)
+Il vantaggio di usare Docker è poter testare il simulatore senza dover installare Python o configurare l'ambiente sul proprio PC.
+
+### 1. Build dell'immagine
+Dalla cartella principale del progetto, esegui:
+```bash
+docker build -t enigma-app .
+
+
+Ecco il README.md completo, strutturato in modo professionale per mettere in risalto sia le tue capacità di programmazione (Python/Logica) sia la tua competenza nell'uso dei container (Docker).
+
+Copia e incolla questo contenuto in un file chiamato README.md nella cartella principale del tuo progetto.
+
+Markdown
+# 🏛️ Python Enigma Machine Simulator
+
+Un simulatore fedele e interattivo della celebre macchina crittografica **Enigma** (Modello M3), l'apparecchio utilizzato per cifrare le comunicazioni durante la Seconda Guerra Mondiale. 
+
+Questo progetto dimostra l'implementazione di logiche crittografiche complesse, l'uso della programmazione a oggetti (OOP) e la distribuzione del software tramite containerizzazione.
+
+---
+
+## 🚀 Caratteristiche Tecniche
+Il simulatore riproduce accuratamente i componenti principali della macchina:
+
+* **Rotori (I, II, III)**: Implementazione delle permutazioni degli alfabeti originali.
+* **Meccanismo di Stepping**: Simulazione del "double step" (il centro avanza se lui stesso o il destro sono sulla tacca).
+* **Riflettore (Reflector B)**: Garantisce che la cifratura sia simmetrica (cifrare due volte con la stessa chiave restituisce il testo originale).
+* **Plugboard (Pannello a prese)**: Supporto per lo scambio di coppie di lettere per aumentare la complessità.
+
+---
+
+## 🛠️ Tecnologie Utilizzate
+* **Linguaggio**: Python 3.10+ (utilizzo del pattern matching `match-case`).
+* **Containerizzazione**: Docker per la portabilità totale dell'ambiente di esecuzione.
+
+---
+
+## 🐳 Esecuzione con Docker (Consigliato)
+Il vantaggio di usare Docker è poter testare il simulatore senza dover installare Python o configurare l'ambiente sul proprio PC.
+
+### 1. Build dell'immagine
+Dalla cartella principale del progetto, esegui:
+```bash
+docker build -t enigma-app .
+
+### 2. Avvio del simulatore
+Dato che il programma è interattivo, è necessario avviarlo con i flag -it:
+
+Bash
+docker run -it enigma-app
+💻 Esecuzione Locale
+Se preferisci avviarlo direttamente con Python:
+
+Assicurati di avere Python 3.10 o superiore installato.
+
+Esegui il comando:
+
+Bash
+python main.py
+📂 Struttura del Progetto
+Plaintext
+.
+├── Class/
+│   └── Enigma.py    # Logica interna e algoritmi dei rotori
+├── main.py          # Interfaccia utente e ciclo principale
+├── Dockerfile       # Configurazione per il container
+└── README.md        # Documentazione del progetto
+👤 Autore
+Davide_Barbieri - Sviluppo logica e containerizzazione
