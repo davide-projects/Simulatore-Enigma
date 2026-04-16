@@ -1,0 +1,13 @@
+# Escludi la cartella di Git
+.git
+.gitignore
+
+# Escludi i file temporanei di Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Escludi file di sistema o di VS Code
+.vscode/
+.DS_Store
