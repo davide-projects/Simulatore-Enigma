@@ -4,8 +4,9 @@ class Enigma:
             "I":   "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
             "II":  "AJDKSIRUXBLHWTMCQGZNPYFVOE",
             "III": "BDFHJLCPTXVZNYEIWGAKMUSQOR",
-            "RIFLETTORE_B": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
-        }
+            "RIFLETTORE_B": "YRUHQSLDPXNGOKMIEBFZCWVJAT",  # originale, punto debole
+            "RIFLETTORE_C": "JNCKWYQXVADOSBLRGPMZUIEHFT"   # custom, punti fissi ammessi
+            }
         self.tacche = {"I": "Q", "II": "E", "III": "V"}
 
         # Carichiamo i rotori (0=Sinistra, 1=Centro, 2=Destra)
@@ -68,7 +69,7 @@ class Enigma:
         n = self.passaggio_rotore(n, self.rotori[0], self.offset[0])
         
         # Riflettore
-        n = (ord(self.alfabeti_rotori["RIFLETTORE_B"][n]) - ord('A')) % 26
+        n = (ord(self.alfabeti_rotori["RIFLETTORE_C"][n]) - ord('A')) % 26
         
         # Ritorno: Sinistra -> Centro -> Destra
         n = self.passaggio_rotore(n, self.rotori[0], self.offset[0], inverso=True)

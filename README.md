@@ -10,22 +10,28 @@ Questo progetto dimostra l'implementazione di logiche crittografiche complesse, 
  
 | Versione | Descrizione | Stato |
 |---|---|---|
-| **v1.1** | Replica autentica — comportamento asimmetrico originale (una lettera non cifra mai sé stessa) | ✅ Stabile |
-| **v1.2** | Crittografia simmetrica rinforzata — maggiore robustezza e difficoltà di decifrazione | 🔧 In sviluppo |
+| **v1.0.0** | Replica autentica — comportamento asimmetrico originale (una lettera non cifra mai sé stessa) | ✅ Stabile |
+| **v2.0.0** | Riflettore custom — punto debole rimosso, una lettera può cifrare sé stessa | ✅ Stabile |
  
 > Puoi consultare tutte le versioni nella sezione [**Releases**](../../releases) del repository.
  
 ---
  
-## 🔐 Fedeltà Crittografica (v1.1)
+## 🔐 Evoluzione Crittografica
  
-Questa versione riproduce il comportamento **autentico** della macchina Enigma, incluso il suo celebre punto debole:
+### v1.0.0 — Replica Autentica
+La prima versione riproduce il comportamento **autentico** della macchina Enigma, incluso il suo celebre punto debole:
  
 > **Una lettera non può mai cifrare sé stessa.**
  
-Questo vincolo, imposto dal riflettore, fu uno dei principali punti di attacco sfruttati da Alan Turing e dai crittografi di Bletchley Park per violare il codice Enigma durante la Seconda Guerra Mondiale.
+Questo vincolo, imposto dal Riflettore B originale, fu uno dei principali punti di attacco sfruttati da Alan Turing e dai crittografi di Bletchley Park per violare il codice Enigma durante la Seconda Guerra Mondiale. Escludere questa possibilità eliminava milioni di combinazioni, rendendo l'attacco statistico molto più efficace.
  
-La cifratura è **simmetrica nell'uso**: cifrare un testo e poi cifrare il risultato con la stessa configurazione iniziale restituisce il testo originale.
+### v2.0.0 — Riflettore Custom
+Questa versione introduce un **riflettore custom (Riflettore C)**, costruito per ammettere **punti fissi** — ovvero lettere che possono cifrare sé stesse. Il punto debole originale è rimosso:
+ 
+> **Una lettera può cifrare sé stessa**, rendendo impossibile l'esclusione statistica sfruttata da Turing.
+ 
+Il riflettore custom mantiene la **simmetria delle coppie** — cifrare due volte con la stessa configurazione restituisce il testo originale — ma aggiunge un grado di libertà crittografica assente nella macchina originale.
  
 ---
  
@@ -35,7 +41,8 @@ La cifratura è **simmetrica nell'uso**: cifrare un testo e poi cifrare il risul
 |---|---|
 | **Rotori (I, II, III)** | Permutazioni degli alfabeti originali della macchina M3 |
 | **Meccanismo di Stepping** | Simulazione accurata del *double step*: il rotore centrale avanza se lui stesso o il destro si trovano sulla tacca |
-| **Riflettore B** | Garantisce la cifratura simmetrica — cifrare due volte con la stessa chiave restituisce il testo originale |
+| **Riflettore B** | Riflettore originale — garantisce la cifratura simmetrica ma introduce il punto debole autentico |
+| **Riflettore C** | Riflettore custom — ammette punti fissi, punto debole rimosso *(attivo dalla v2.0.0)* |
 | **Plugboard** | Scambio di coppie di lettere configurabile per aumentare la complessità crittografica |
  
 ---
@@ -95,7 +102,7 @@ Cosa vuoi fare?
   [3] Esci
 ```
  
-Per decifrare un messaggio, è sufficiente inserirlo nella voce **[2]**: la macchina applica la stessa trasformazione in senso inverso, restituendo il testo originale — a patto di usare la stessa configurazione di rotori, chiave e plugboard.
+Per decifrare un messaggio è sufficiente inserirlo nella voce **[2]**: la macchina applica la stessa trasformazione restituendo il testo originale — a patto di usare la stessa configurazione di rotori, chiave e plugboard.
  
 ---
  
@@ -104,7 +111,7 @@ Per decifrare un messaggio, è sufficiente inserirlo nella voce **[2]**: la macc
 ```
 ENIGMA/
 ├── Class/
-│   └── Enigma.py      # Logica crittografica: rotori, plugboard, riflettore, stepping
+│   └── Enigma.py      # Logica crittografica: rotori, plugboard, riflettori, stepping
 ├── main.py            # Interfaccia utente e ciclo principale
 ├── Dockerfile         # Configurazione per il container Docker
 ├── .dockerignore      # File esclusi dal contesto Docker
